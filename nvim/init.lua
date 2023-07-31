@@ -1,4 +1,6 @@
 require('highlights')
+require('plugins')
+require('base')
 
 -- copy to clip board for WSL
 vim.cmd [[
@@ -8,4 +10,3 @@ vim.cmd [[
   augroup END
 ]]
 
-require('plugins')
