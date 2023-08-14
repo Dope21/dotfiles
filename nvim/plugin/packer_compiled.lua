@@ -89,6 +89,11 @@ _G.packer_plugins = {
     path = "/home/bestz/.local/share/nvim/site/pack/packer/start/neosolarized.nvim",
     url = "https://github.com/svrana/neosolarized.nvim"
   },
+  ["nvim-lspconfig"] = {
+    loaded = true,
+    path = "/home/bestz/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
+    url = "https://github.com/neovim/nvim-lspconfig"
+  },
   ["nvim-web-devicons"] = {
     loaded = false,
     needs_bufread = false,
