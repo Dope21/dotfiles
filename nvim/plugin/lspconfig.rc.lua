@@ -27,7 +27,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
 end
 
--- typescript configure
+-- typescript
 nvim_lsp.tsserver.setup {
   -- on_attach = on_attach,
   on_attach = function(client, bufnr)
@@ -39,6 +39,7 @@ nvim_lsp.tsserver.setup {
   -- capabilities = capabilities
 }
 
+-- lua script
 nvim_lsp.lua_ls.setup {
   -- capabilities = capabilities,
   on_attach = function(client, bufnr)
@@ -57,4 +58,15 @@ nvim_lsp.lua_ls.setup {
       },
     },
   },
+}
+
+-- html
+nvim_lsp.html.setup {
+  on_attach = function(client, bufnr)
+    on_attach(client, bufnr)
+    enable_format_on_save(client, bufnr)
+  end,
+  filetypes = { "html" },
+  cmd = { "vscode-html-language-server", "--stdio" }
+  -- capabilities = capabilities
 }
