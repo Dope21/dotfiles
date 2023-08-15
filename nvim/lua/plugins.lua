@@ -20,6 +20,10 @@ packer.startup(function(use)
   use 'onsails/lspkind-nvim'  --
   use 'hrsh7th/cmp-buffer'    --
   use 'hrsh7th/cmp-nvim-lsp'  --
-  use 'hrsh8th/nvim-cmp'      --
+  use 'hrsh7th/nvim-cmp'      --
   use 'L3MON4D3/LuaSnip'      -- Snip engine
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate'
+  }
 end)

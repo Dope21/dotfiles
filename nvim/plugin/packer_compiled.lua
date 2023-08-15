@@ -112,7 +112,7 @@ _G.packer_plugins = {
   ["nvim-cmp"] = {
     loaded = true,
     path = "/home/bestz/.local/share/nvim/site/pack/packer/start/nvim-cmp",
-    url = "https://github.com/hrsh7th/nvim-cmp"
+    url = "https://github.com/hrsh8th/nvim-cmp"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
