@@ -70,3 +70,24 @@ nvim_lsp.html.setup {
   cmd = { "vscode-html-language-server", "--stdio" }
   -- capabilities = capabilities
 }
+
+-- python
+nvim_lsp.pyright.setup {
+  on_attach = function(client, bufnr)
+    on_attach(client, bufnr)
+    enable_format_on_save(client, bufnr)
+  end,
+  filetype = { "python" },
+  cmd = { "pyright-langserver", "--stdio" },
+  -- root_dir = "see source file",
+  settings = {
+    python = {
+      analysis = {
+        autoSearchPaths = true,
+        diagnosticMode = "workspace",
+        useLibraryCodeForTypes = true
+      }
+    }
+  },
+  single_file_support = true
+}
