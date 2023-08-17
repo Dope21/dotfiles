@@ -28,4 +28,5 @@ packer.startup(function(use)
   }
   use 'windwp/nvim-autopairs'
   use 'windwp/nvim-ts-autotag'
+  use 'kyazdani42/nvim-web-devicons'
 end)
