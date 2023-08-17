@@ -35,13 +35,11 @@ nvim_lsp.tsserver.setup {
     enable_format_on_save(client, bufnr)
   end,
   filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
-  cmd = { "typescript-language-server", "--stdio" }
-  -- capabilities = capabilities
+  cmd = { "typescript-language-server", "--stdio" },
 }
 
 -- lua script
 nvim_lsp.lua_ls.setup {
-  -- capabilities = capabilities,
   on_attach = function(client, bufnr)
     on_attach(client, bufnr)
     enable_format_on_save(client, bufnr)
@@ -67,8 +65,7 @@ nvim_lsp.html.setup {
     enable_format_on_save(client, bufnr)
   end,
   filetypes = { "html" },
-  cmd = { "vscode-html-language-server", "--stdio" }
-  -- capabilities = capabilities
+  cmd = { "vscode-html-language-server", "--stdio" },
 }
 
 -- python
@@ -79,7 +76,6 @@ nvim_lsp.pyright.setup {
   end,
   filetype = { "python" },
   cmd = { "pyright-langserver", "--stdio" },
-  -- root_dir = "see source file",
   settings = {
     python = {
       analysis = {
