@@ -29,4 +29,9 @@ packer.startup(function(use)
   use 'windwp/nvim-autopairs'
   use 'windwp/nvim-ts-autotag'
   use 'kyazdani42/nvim-web-devicons'
+
+  -- telescope
+  use 'nvim-telescope/telescope.nvim'
+  use 'nvim-telescope/telescope-file-browser.nvim'
+  use 'nvim-lua/plenary.nvim'
 end)
