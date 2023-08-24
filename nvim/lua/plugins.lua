@@ -39,4 +39,5 @@ packer.startup(function(use)
   use 'nvim-lua/plenary.nvim'
 
   use 'norcalli/nvim-colorizer.lua' -- color highlight
+  use 'lewis6991/gitsigns.nvim'     -- git marker
 end)
