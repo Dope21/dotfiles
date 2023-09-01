@@ -25,13 +25,15 @@ packer.startup(function(use)
   use 'kyazdani42/nvim-web-devicons' -- icons
   use 'akinsho/nvim-bufferline.lua'  -- tabs buffer
 
-  -- LSP server and auto complete plugins
+  -- LSP related plugins
   use 'neovim/nvim-lspconfig'
   use 'onsails/lspkind-nvim'
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/nvim-cmp'
   use 'L3MON4D3/LuaSnip'
+  use 'williamboman/mason.nvim'
+  use 'williamboman/mason-lspconfig.nvim'
 
   -- Telescope
   use 'nvim-telescope/telescope.nvim'
