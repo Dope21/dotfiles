@@ -4,6 +4,9 @@ Set-up and Configuration guideline
 
 ## Keys mapping
 
+- `nt` - new tab
+- `et` - edit tab
+
 ### bufferline
 `Tab` - Next tab
 `Shift + Tab` - Previous tab
