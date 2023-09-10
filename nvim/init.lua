@@ -1,6 +1,7 @@
 require('highlights')
 require('plugins')
 require('base')
+require('mapping')
 
 -- copy to clip board for WSL
 vim.cmd [[
