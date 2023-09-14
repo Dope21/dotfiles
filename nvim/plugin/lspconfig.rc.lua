@@ -34,8 +34,9 @@ nvim_lsp.tsserver.setup {
     on_attach(client, bufnr)
     enable_format_on_save(client, bufnr)
   end,
-  filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+  filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
   cmd = { "typescript-language-server", "--stdio" },
+  -- root_dir = function() return vim.loop.cwd() end
 }
 
 -- lua script
