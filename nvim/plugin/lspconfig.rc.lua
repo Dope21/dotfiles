@@ -112,3 +112,11 @@ nvim_lsp.cssls.setup {
     }
   }
 }
+
+nvim_lsp.tailwindcss.setup {
+  capabilities = require('cmp_nvim_lsp').default_capabilities(),
+  on_attach = function(client, bufnr)
+    on_attach(client, bufnr)
+    enable_format_on_save(client, bufnr)
+  end
+}
