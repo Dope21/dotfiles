@@ -27,16 +27,19 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
 end
 
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+-- local capabilities = vim.lsp.protocol.make_client_capabilities()
+-- capabilities.textDocument.completion.completionItem.snippetSupport = true
+
 -- typescript
 nvim_lsp.tsserver.setup {
-  -- on_attach = on_attach,
   on_attach = function(client, bufnr)
     on_attach(client, bufnr)
     enable_format_on_save(client, bufnr)
   end,
+  capabilities = capabilities,
   filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
   cmd = { "typescript-language-server", "--stdio" },
-  -- root_dir = function() return vim.loop.cwd() end
 }
 
 -- lua script
@@ -89,34 +92,12 @@ nvim_lsp.pyright.setup {
   single_file_support = true
 }
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-
 nvim_lsp.cssls.setup {
   capabilities = capabilities,
-  on_attach = function(client, bufnr)
-    on_attach(client, bufnr)
-    enable_format_on_save(client, bufnr)
-  end,
-  cmd = { "vscode-css-language-server", "--stdio" },
-  filetypes = { "css", "scss", "less" },
-  settings = {
-    css = {
-      validate = true
-    },
-    less = {
-      validate = true
-    },
-    scss = {
-      validate = true
-    }
-  }
+  on_attach = on_attach
 }
 
 nvim_lsp.tailwindcss.setup {
-  capabilities = require('cmp_nvim_lsp').default_capabilities(),
-  on_attach = function(client, bufnr)
-    on_attach(client, bufnr)
-    enable_format_on_save(client, bufnr)
-  end
+  capabilities = capabilities,
+  on_attach = on_attach
 }
