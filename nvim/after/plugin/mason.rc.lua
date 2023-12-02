@@ -5,5 +5,12 @@ if (not status2) then return end
 
 mason.setup {}
 lspconfig.setup {
-  ensure_installed = { 'tailwindcss', 'tsserver' }
+  ensure_installed = {
+    'lua_ls',
+    'tailwindcss',
+    'tsserver',
+    'pyright',
+    'html',
+    'cssls'
+  }
 }
