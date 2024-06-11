@@ -1,0 +1,33 @@
+// Place your key bindings in this file to override the defaults
+[
+    {
+        "key": "n",
+        "command": "editor.action.nextMatchFindAction",
+        "when": "editorTextFocus && vim.mode != 'Insert'"
+    },
+    {
+        "key": "shift+n",
+        "command": "editor.action.previousMatchFindAction",
+        "when": "editorTextFocus && vim.mode != 'Insert'"
+    },
+    {
+        "key": "f f",
+        "command": "workbench.action.quickOpen",
+        "when": "vim.mode != 'Insert' && !terminalFocus && editorFocus"
+    },
+    {
+        "key": "shift+space",
+        "command": "workbench.action.terminal.toggleTerminal",
+        "when": "terminal.active"
+    },
+    {
+        "key": "tab",
+        "command": "workbench.action.nextEditor",
+        "when": "vim.mode != 'Insert' && !terminalFocus"
+    },
+    {
+        "key": "shift+tab",
+        "command": "workbench.action.previousEditor",
+        "when": "vim.mode != 'Insert' && !terminalFocus"
+    },
+]
