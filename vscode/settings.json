@@ -4,7 +4,7 @@
   "workbench.iconTheme": "material-icon-theme",
   "json.schemaDownload.enable": false,
   "editor.codeActionsOnSave": {
-    "source.fixAll": "always",
+    "source.fixAll": "always"
   },
   "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact", "vue"],
   "editor.tabSize": 2,
@@ -15,5 +15,5 @@
   "prettier.semi": false,
   "prettier.singleQuote": true,
   "editor.formatOnSave": true,
-  "extensions.ignoreRecommendations": true,
+  "extensions.ignoreRecommendations": true
 }

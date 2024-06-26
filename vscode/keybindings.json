@@ -29,5 +29,5 @@
         "key": "shift+tab",
         "command": "workbench.action.previousEditor",
         "when": "vim.mode != 'Insert' && !terminalFocus"
-    },
+    }
 ]
