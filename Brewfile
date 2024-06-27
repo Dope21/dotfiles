@@ -2,7 +2,6 @@ tap "homebrew/bundle"
 tap "homebrew/services"
 tap "mongodb/brew"
 tap "oven-sh/bun"
-tap "snyk/tap"
 # User-friendly command-line shell for UNIX-like operating systems
 brew "fish"
 # Kubernetes package manager
@@ -17,16 +16,15 @@ brew "node"
 brew "neovim"
 # Development kit for the Java programming language
 brew "openjdk"
-# Launcher to analyze a project with SonarQube
-brew "sonar-scanner"
+# Terminal multiplexer
+brew "tmux"
 # JavaScript package manager
 brew "yarn"
 # High-performance, schema-free, document-oriented database
 brew "mongodb/brew/mongodb-community"
 # Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
 brew "oven-sh/bun/bun"
-# Find & fix known vulnerabilities in open-source dependencies
-brew "snyk/tap/snyk"
+cask "font-hack-nerd-font"
 # Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2"
 # Open-source keystroke visualiser
