@@ -15,5 +15,7 @@
   "prettier.semi": false,
   "prettier.singleQuote": true,
   "editor.formatOnSave": true,
-  "extensions.ignoreRecommendations": true
+  "extensions.ignoreRecommendations": true,
+  "terminal.integrated.fontFamily": "'Hack Nerd Font'",
+  "editor.fontFamily": "Menlo, Monaco, 'Courier New', monospace, 'Hack Nerd Font'"
 }
