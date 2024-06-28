@@ -4,6 +4,8 @@ tap "mongodb/brew"
 tap "oven-sh/bun"
 # User-friendly command-line shell for UNIX-like operating systems
 brew "fish"
+# Plugin manager for the Fish shell
+brew "fisher"
 # Kubernetes package manager
 brew "helm"
 # Kubernetes command-line interface
