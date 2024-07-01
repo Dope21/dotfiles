@@ -1,0 +1,11 @@
+{
+  "recommendations": [
+    "github.github-vscode-theme",
+    "esbenp.prettier-vscode",
+    "dsznajder.es7-react-js-snippets",
+    "ms-azuretools.vscode-docker",
+    "vscodevim.vim",
+    "pkief.material-icon-theme",
+    "dbaeumer.vscode-eslint"
+  ]
+}
