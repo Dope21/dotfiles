@@ -26,8 +26,3 @@ brew "yarn"
 brew "mongodb/brew/mongodb-community"
 # Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
 brew "oven-sh/bun/bun"
-cask "font-hack-nerd-font"
-# Terminal emulator as alternative to Apple's Terminal app
-cask "iterm2"
-# Open-source keystroke visualiser
-cask "keycastr"
