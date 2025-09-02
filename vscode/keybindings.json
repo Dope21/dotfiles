@@ -1,33 +1,82 @@
-// Place your key bindings in this file to override the defaults
 [
-    {
-        "key": "n",
-        "command": "editor.action.nextMatchFindAction",
-        "when": "editorTextFocus && vim.mode != 'Insert'"
-    },
-    {
-        "key": "shift+n",
-        "command": "editor.action.previousMatchFindAction",
-        "when": "editorTextFocus && vim.mode != 'Insert'"
-    },
-    {
-        "key": "f f",
-        "command": "workbench.action.quickOpen",
-        "when": "vim.mode != 'Insert' && !terminalFocus && editorFocus"
-    },
-    {
-        "key": "shift+space",
-        "command": "workbench.action.terminal.toggleTerminal",
-        "when": "terminal.active"
-    },
-    {
-        "key": "tab",
-        "command": "workbench.action.nextEditor",
-        "when": "vim.mode != 'Insert' && !terminalFocus"
-    },
-    {
-        "key": "shift+tab",
-        "command": "workbench.action.previousEditor",
-        "when": "vim.mode != 'Insert' && !terminalFocus"
-    }
+  {
+    "key": "shift+space",
+    "command": "workbench.action.terminal.toggleTerminal",
+    "when": "terminal.active"
+  },
+  {
+    "key": "f f",
+    "command": "workbench.action.quickOpen",
+    "when": "vim.mode == 'Normal' && !sideBarFocus && !inFilesPicker && !inQuickOpen && !inSettingsEditor && !inKeybindingsSearch"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "workbench.action.quickOpenNavigateNextInFilePicker",
+    "when": "inFilesPicker && inQuickOpen"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "workbench.action.quickOpenNavigatePreviousInFilePicker",
+    "when": "inFilesPicker && inQuickOpen"
+  },
+  {
+    "key": "tab",
+    "command": "workbench.action.nextEditor",
+    "when": "vim.mode == 'Normal' && editorFocus"
+  },
+  {
+    "key": "shift+tab",
+    "command": "workbench.action.previousEditor",
+    "when": "vim.mode == 'Normal' && editorFocus"
+  },
+  {
+    "key": "ctrl+b",
+    "command": "workbench.action.toggleSidebarVisibility",
+    "when": "vim.mode == 'Normal'"
+  },
+  {
+    "key": "ctrl+n",
+    "command": "explorer.newFile",
+    "when": "explorerViewletFocus && filesExplorerFocus"
+  },
+  {
+    "key": "ctrl+shift+n",
+    "command": "explorer.newFolder",
+    "when": "explorerViewletFocus && filesExplorerFocus"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "selectNextSuggestion",
+    "when": "suggestWidgetVisible"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "selectPrevSuggestion",
+    "when": "suggestWidgetVisible"
+  },
+  {
+    "key": "ctrl+e",
+    "command": "hideSuggestWidget",
+    "when": "suggestWidgetVisible"
+  },
+  {
+    "key": "ctrl+w",
+    "command": "workbench.action.closeActiveEditor",
+    "when": "vim.mode == 'Normal' && editorFocus && !sideBarFocus"
+  },
+  {
+    "key": "ctrl+n",
+    "command": "workbench.action.terminal.new",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "workbench.action.terminal.focusNext",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "workbench.action.terminal.focusPrevious",
+    "when": "terminalFocus"
+  }
 ]
