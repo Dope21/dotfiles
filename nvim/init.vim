@@ -12,4 +12,4 @@ vnoremap ' v`<i'<esc>`>la'<esc>
 
 iabbrev @@ tk.limsila@gmail.com
 
-echo ">^.^<!"
+echo ">^.^<"
