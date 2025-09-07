@@ -17,3 +17,5 @@ echo.
 call "%~dp0\vscode.bat" "%REPO_ROOT%"
 
 echo.
+
+call "%~dp0\powershell.bat" "%REPO_ROOT%"
