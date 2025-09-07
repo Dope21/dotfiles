@@ -31,4 +31,3 @@ mklink "%VSCODE_DES%\settings.json" "%VSCODE_SRC%\settings.json"
 mklink "%VSCODE_DES%\keybindings.json" "%VSCODE_SRC%\keybindings.json"
 
 echo VSCode Setup Done !!
-echo.

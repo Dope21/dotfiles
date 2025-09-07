@@ -35,4 +35,3 @@ if errorlevel 1 (
 )
 
 echo NeoVim Setup Done !!
-echo.
