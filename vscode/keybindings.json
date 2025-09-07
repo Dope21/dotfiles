@@ -7,7 +7,7 @@
   {
     "key": "f f",
     "command": "workbench.action.quickOpen",
-    "when": "vim.mode == 'Normal' && !sideBarFocus && !inFilesPicker && !inQuickOpen && !inSettingsEditor && !inKeybindingsSearch"
+    "when": "vim.mode == 'Normal' && !sideBarFocus && !inFilesPicker && !inQuickOpen && !inSettingsEditor && !inKeybindingsSearch && !terminalFocus"
   },
   {
     "key": "ctrl+j",
