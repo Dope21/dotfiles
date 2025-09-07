@@ -1,5 +1,5 @@
 {
-  "workbench.iconTheme": "icons",
+  "workbench.iconTheme": "material-icon-theme",
   "workbench.colorTheme": "GitHub Dark Default",
   "vim.useSystemClipboard": true,
   "editor.tabSize": 2,
