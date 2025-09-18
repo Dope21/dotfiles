@@ -4,17 +4,16 @@
   "vim.useSystemClipboard": true,
   "editor.tabSize": 2,
   "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
   "terminal.integrated.fontFamily": "Hack Nerd Font",
   "editor.fontFamily": "Hack Nerd Font",
   "vim.visualModeKeyBindingsNonRecursive": [
     {
-      "before": [
-        "p"
-      ],
-      "commands": [
-        "editor.action.clipboardPasteAction",
-        "extension.vim_escape"
-      ]
+      "before": ["p"],
+      "commands": ["editor.action.clipboardPasteAction", "extension.vim_escape"]
     }
   ],
   "typescript.updateImportsOnFileMove.enabled": "always"
