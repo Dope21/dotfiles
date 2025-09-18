@@ -1,0 +1,4 @@
+Modules
+- PSReadline
+- Oh-My-Posh
+- Terminal-icons
