@@ -16,5 +16,6 @@
         "extension.vim_escape"
       ]
     }
-  ]
+  ],
+  "typescript.updateImportsOnFileMove.enabled": "always"
 }
