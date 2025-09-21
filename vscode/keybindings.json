@@ -78,5 +78,10 @@
     "key": "ctrl+k",
     "command": "workbench.action.terminal.focusPrevious",
     "when": "terminalFocus"
+  },
+  {
+    "key": "g q",
+    "command": "editor.action.formatSelection",
+    "when": "editorHasSelection && editorTextFocus"
   }
 ]

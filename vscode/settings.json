@@ -2,19 +2,30 @@
   "workbench.iconTheme": "material-icon-theme",
   "workbench.colorTheme": "GitHub Dark Default",
   "vim.useSystemClipboard": true,
-  "editor.tabSize": 2,
-  "editor.formatOnSave": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
-  },
-  "terminal.integrated.fontFamily": "Hack Nerd Font",
-  "editor.fontFamily": "Hack Nerd Font",
   "vim.visualModeKeyBindingsNonRecursive": [
     {
       "before": ["p"],
       "commands": ["editor.action.clipboardPasteAction", "extension.vim_escape"]
     }
   ],
-  "typescript.updateImportsOnFileMove.enabled": "always"
+  "editor.fontFamily": "Hack Nerd Font",
+  "editor.tabSize": 2,
+  "editor.formatOnSave": false,
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  "terminal.integrated.fontFamily": "Hack Nerd Font",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "prettier.semi": false,
+  "prettier.jsxSingleQuote": true,
+  "prettier.singleQuote": true,
+  "prettier.tabWidth": 2,
+  "prettier.useTabs": false,
+  "prettier.bracketSpacing": true,
+  "prettier.arrowParens": "always",
+  "prettier.endOfline": "lf",
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
