@@ -4,6 +4,7 @@ echo VSCode Setup Start !!
 set "BASE_DIR=%~1%"
 set "VSCODE_DES=%USERPROFILE%\AppData\Roaming\Code\User"
 set "VSCODE_SRC=%BASE_DIR%\vscode"
+set "VSCODE_EXTENSIONS=%VSCODE_SRC%\extensions.txt"
 
 :: Ensure source file exists
 if not exist "%VSCODE_SRC%" (
@@ -29,5 +30,20 @@ if exist "%VSCODE_DES%\keybindings.json" del "%VSCODE_DES%\keybindings.json"
 echo Creating symlinks
 mklink "%VSCODE_DES%\settings.json" "%VSCODE_SRC%\settings.json"
 mklink "%VSCODE_DES%\keybindings.json" "%VSCODE_SRC%\keybindings.json"
+
+:: Install VSCode Extensions
+echo Install extensions
+
+:: Ensure extensions file exists
+if not exist "%VSCODE_EXTENSIONS%" (
+  echo ERROR: Extensions file not found: "%VSCODE_EXTENSIONS%"
+  pause
+  exit /b 1
+)
+
+:: Loop through each extension 
+for /f "usebackq delims=" %%e in ("%VSCODE_EXTENSIONS%") do ( 
+  code --install-extension %%e --extensions-dir "%USERPROFILE%\.vscode\extensions"
+)
 
 echo VSCode Setup Done !!
