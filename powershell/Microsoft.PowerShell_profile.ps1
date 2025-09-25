@@ -1,13 +1,23 @@
 Clear-Host
-Write-Host "Well cum!!, $env:USERNAME!"
 
-Set-Alias g git
-Set-Alias vim nvim
+if (Get-Command git -ErrorAction SilentlyContinue) {
+  Set-Alias g git
+}
 
-Import-Module -Name Terminal-Icons
+if (Get-Command nvim -ErrorAction SilentlyContinue) {
+  Set-Alias vim nvim
+}
 
-Set-PSReadLineKeyHandler -Chord "Ctrl+f" -Function ForwardWord
-Set-PSReadLineKeyHandler -Chord "Ctrl-l" -Function AcceptSuggestion
+if (Get-Module -ListAvailable -Name Terminal-Icons) {
+  Import-Module -Name Terminal-Icons
+}
 
-$theme = Join-Path (Split-Path $PROFILE) "oh-my-posh-theme.omp.json"
-oh-my-posh init pwsh --config $theme | Invoke-Expression
+if (Get-Module -ListAvailable -Name PSReadLine) {
+  Set-PSReadLineKeyHandler -Chord "Ctrl+f" -Function ForwardWord
+  Set-PSReadLineKeyHandler -Chord "Ctrl-l" -Function AcceptSuggestion
+}
+
+if (Get-Command oh-my-posh -ErrorAction SilentlyContinue) {
+  $theme = Join-Path (Split-Path $PROFILE) "oh-my-posh-theme.omp.json"
+  oh-my-posh init pwsh --config $theme | Invoke-Expression
+}
