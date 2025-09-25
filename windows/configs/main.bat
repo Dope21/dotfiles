@@ -10,12 +10,21 @@ echo Repo root detected: %REPO_ROOT%
 
 echo.
 
-call "%~dp0\nvim.bat" "%REPO_ROOT%"
+where nvim >nul 2>nul
+if %ERRORLEVEL%==0 (
+  call "%~dp0\nvim.bat" "%REPO_ROOT%"
+)
 
 echo.
 
-call "%~dp0\vscode.bat" "%REPO_ROOT%"
+where code >nul 2>nul
+if %ERRORLEVEL%==0 (
+  call "%~dp0\vscode.bat" "%REPO_ROOT%"
+)
 
 echo.
 
-call "%~dp0\powershell.bat" "%REPO_ROOT%"
+where powershell >nul 2>nul
+if %ERRORLEVEL%==0 (
+  call "%~dp0\powershell.bat" "%REPO_ROOT%"
+)
