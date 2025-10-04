@@ -8,6 +8,9 @@ for %%I in ("%~dp0..\..") do set "REPO_ROOT=%%~fI"
 
 echo Repo root detected: %REPO_ROOT%
 
+:: No Powershell check since it is Windows
+call "%~dp0\powershell.bat" "%REPO_ROOT%"
+
 echo.
 
 where nvim >nul 2>nul
@@ -24,7 +27,4 @@ if %ERRORLEVEL%==0 (
 
 echo.
 
-where powershell >nul 2>nul
-if %ERRORLEVEL%==0 (
-  call "%~dp0\powershell.bat" "%REPO_ROOT%"
-)
+echo We done!!!!!
