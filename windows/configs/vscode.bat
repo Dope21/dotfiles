@@ -43,7 +43,7 @@ if not exist "%VSCODE_EXTENSIONS%" (
 
 :: Loop through each extension 
 for /f "usebackq delims=" %%e in ("%VSCODE_EXTENSIONS%") do ( 
-  code --install-extension %%e --extensions-dir "%USERPROFILE%\.vscode\extensions"
+  call code --install-extension %%e --extensions-dir "%USERPROFILE%\.vscode\extensions"
 )
 
 echo VSCode Setup Done !!
