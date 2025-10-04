@@ -2,3 +2,4 @@ Neovim - C:\Users\{USER}\AppData\Local\nvim
 VSCode - C:\Users\{USER}\AppData\Roaming\Code\User
 VSCode (extensions) - C:\Users\{USER}\.vscode\extensions
 Powershell - C:\Users\{USER}\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
+Terminal - C:\Users\{USER}\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json
