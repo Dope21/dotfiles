@@ -21,7 +21,7 @@
   "prettier.useTabs": false,
   "prettier.bracketSpacing": true,
   "prettier.arrowParens": "always",
-  "prettier.endOfline": "lf",
+  "prettier.endOfLine": "lf",
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -31,5 +31,8 @@
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "javascript.updateImportsOnFileMove.enabled": "always"
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "[markdown]": {
+    "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+  }
 }

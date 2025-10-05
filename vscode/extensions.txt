@@ -1,3 +1,4 @@
+bierner.markdown-preview-github-styles
 bradlc.vscode-tailwindcss
 dbaeumer.vscode-eslint
 esbenp.prettier-vscode
@@ -13,3 +14,4 @@ ms-toolsai.vscode-jupyter-slideshow
 pkief.material-icon-theme
 rodrigovallades.es7-react-js-snippets
 vscodevim.vim
+yzhang.markdown-all-in-one
