@@ -21,7 +21,7 @@
   "prettier.useTabs": false,
   "prettier.bracketSpacing": true,
   "prettier.arrowParens": "always",
-  "prettier.endOfLine": "lf",
+  // "prettier.endOfLine": "auto",
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -34,5 +34,14 @@
   "javascript.updateImportsOnFileMove.enabled": "always",
   "[markdown]": {
     "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "vscode.css-language-features"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[java]": {
+    "editor.defaultFormatter": "redhat.java"
   }
 }
