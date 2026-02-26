@@ -6,6 +6,7 @@ import (
 	"os"
 	"runtime"
 	"slices"
+	"os/exec"
 
 	"gopkg.in/yaml.v3"
 )
@@ -87,7 +88,6 @@ func getPlatform() (string, error) {
 
 func main() {
 
-
 	data, err := os.ReadFile("./template.yaml")
 	if err != nil {
 		log.Fatal("error")
@@ -121,6 +121,8 @@ func main() {
 		for _, link := range linkMap {
 			for src, dst := range link {
 				fmt.Println(src, dst)
+				// create symlink (return error with description)
+				// if error != nil log it and handle base on conflict config
 			}
 		}
 	}
