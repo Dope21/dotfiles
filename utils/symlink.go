@@ -1,18 +1,29 @@
 package symlink
 
-import (
-	"os"
-	"os/exec"
-)
+import "os"
 
-var RunningOS string = "windows"
-var ConflictHandering string = "error" // replace, skip, error
+func CreateSymlink(source, link string) error {
+	_, err := os.Stat(source)
+	if err != nil {
+		return err
+	}
 
-func CreateSymlink(link, target string) error {
-	// check the source if it exist. we don't have to check for target since it will auto create
-	// check os and create symlink
-		// check if it folder of file
-		// if the link already exist (check for conflict)
-		// if previlege not allow (check for conflict)
-	// check error by any mean
+	linkInfo, err := os.Lstat(link)
+	if err != nil {
+		return err
+	}
+
+	if linkInfo.Mode()&os.ModeSymlink != 0 {
+		err = os.Remove(link)
+		if err != nil {
+			return err
+		}
+	}
+
+	err = os.Symlink(source, link)
+	if err != nil {
+		return err
+	}
+
+	return nil
 }
