@@ -19,6 +19,9 @@ func main() {
 
 	var config Config
 	err = yaml.Unmarshal(data, &config)
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	runningOS, err := GetPlatform()
 	if err != nil {

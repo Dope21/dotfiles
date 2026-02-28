@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"path/filepath"
 	"runtime"
 )
 
@@ -18,25 +19,39 @@ func GetPlatform() (string, error) {
 }
 
 func CreateSymlink(source, link string) error {
-	_, err := os.Stat(source)
+	sourceAbs, err := filepath.Abs(source)
 	if err != nil {
 		return err
 	}
 
 	linkInfo, err := os.Lstat(link)
-	if err != nil {
-		return err
-	}
 
-	if linkInfo.Mode()&os.ModeSymlink != 0 {
-		err = os.Remove(link)
-		if err != nil {
+	if err == nil && linkInfo.Mode()&os.ModeSymlink != 0 {
+		if err = os.Remove(link); err != nil {
 			return err
 		}
 	}
 
-	err = os.Symlink(source, link)
-	if err != nil {
+	if err != nil && !os.IsNotExist(err) {
+		return err
+	}
+
+	if os.IsNotExist(err) {
+		if err = CreatePath(link); err != nil {
+			return err
+		}
+	}
+
+	if err = os.Symlink(sourceAbs, link); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func CreatePath(path string) error {
+	dir := filepath.Dir(path)
+	if err := os.MkdirAll(dir, 0755); err != nil {
 		return err
 	}
 
