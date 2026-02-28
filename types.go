@@ -55,6 +55,10 @@ func (l *LinkMap) UnmarshalYAML(value *yaml.Node) error {
 }
 
 func (l *LinkMap) GetOS(os string) []map[string]string {
+	if len(l.Base) != 0 {
+		return l.Base
+	}
+
 	switch os {
 	case "windows":
 		return l.Windows
