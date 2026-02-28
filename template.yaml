@@ -2,26 +2,26 @@ backup: true # default to false can define it in each tool level
 tools:
   - name: "neovim"
     description: "Setup NeoVim"
-    conflict: "replace" # "replace" | "skip" | "error"
+    conflict: "error" # "skip" | "error"
     linkmap:
       windows: # if not define os link, it will attemp to link base on user os
-        - "nvim/init.vim": "%LOCALAPPDATA%/nvim"
+        - "nvim/init.vim": "$LOCALAPPDATA/nvim/init.vim"
 
   - name: "powershell"
     os: ["windows"] # tell script to setup this up on specify folder
     description: "Setup Powershell"
-    conflict: "replace"
+    conflict: "error"
     linkmap:
-      - "powershell/Microsoft.PowerShell_profile.ps1": "%USERPROFILE%/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1"
-      - "powershell/oh-my-posh-theme.omp.json": "%USERPROFILE%/Documents/WindowsPowerShell/oh-my-posh-theme.omp.json"
+      - "powershell/Microsoft.PowerShell_profile.ps1": "$USERPROFILE/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1"
+      - "powershell/oh-my-posh-theme.omp.json": "$USERPROFILE/Documents/WindowsPowerShell/oh-my-posh-theme.omp.json"
 
   - name: "vscode"
     description: "Setup Visual Studio"
-    conflict: "replace"
+    conflict: "error"
     linkmap:
       windows:
-        - "vscode/keybindings.json": "%USERPROFILE%/AppData/Roaming/Code/User/keybindings.json"
-        - "vscode/settings.json": "%USERPROFILE%/AppData/Roaming/Code/User/settings.json"
+        - "vscode/keybindings.json": "$USERPROFILE/AppData/Roaming/Code/User/keybindings.json"
+        - "vscode/settings.json": "$USERPROFILE/AppData/Roaming/Code/User/settings.json"
     post-link: # will run inorder if the previous one fail then the next won't run
       - name: "Install vscode extensions"
         cmd: ["vscode/install-extensions.bat"]
