@@ -19,6 +19,9 @@ func GetPlatform() (string, error) {
 }
 
 func CreateSymlink(source, link string) error {
+	source = os.ExpandEnv(source)
+	link = os.ExpandEnv(link)
+
 	sourceAbs, err := filepath.Abs(source)
 	if err != nil {
 		return err
