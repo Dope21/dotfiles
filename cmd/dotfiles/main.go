@@ -15,15 +15,16 @@ import (
 const BACKUP_PATH = "./backup"
 
 func main() {
-	if err := run(); err != nil {
+	configPath := os.Args[1]
+	if err := run(configPath); err != nil {
 		log.Fatal(err)
 	}
 }
 
-func run() error {
-	utils.LogInfo("Loading Config...", true)
+func run(configPath string) error {
+	utils.LogInfo(fmt.Sprintf("Loading Config from %s", configPath), true)
 
-	data, err := os.ReadFile("./template.yaml")
+	data, err := os.ReadFile(configPath)
 	if err != nil {
 		return err
 	}
