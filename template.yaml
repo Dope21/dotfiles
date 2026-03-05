@@ -1,14 +1,13 @@
-backup: true # default to false can define it in each tool level
 tools:
   - name: "neovim"
     description: "Setup NeoVim"
-    conflict: "error" # "skip" | "error"
+    conflict: "error"
     linkmap:
-      windows: # if not define os link, it will attemp to link base on user os
+      windows:
         - "nvim/init.vim": "$LOCALAPPDATA/nvim/init.vim"
 
   - name: "powershell"
-    os: ["windows"] # tell script to setup this up on specify folder
+    os: ["windows"]
     description: "Setup Powershell"
     conflict: "error"
     linkmap:
@@ -22,9 +21,9 @@ tools:
       windows:
         - "vscode/keybindings.json": "$USERPROFILE/AppData/Roaming/Code/User/keybindings.json"
         - "vscode/settings.json": "$USERPROFILE/AppData/Roaming/Code/User/settings.json"
-    post-link: # will run inorder if the previous one fail then the next won't run
+    post-link:
       - name: "Install vscode extensions"
         cmd: ["vscode/install-extensions.bat"]
-    maintenace: # list of maintenance script run seperately
+    maintenace:
       - name: "Collect Vscode Extensions"
         cmd: ["vscode/get-extensions.bat"]

@@ -7,7 +7,6 @@ import (
 )
 
 type Config struct {
-	Backup bool   `yaml:"backup,omitempty"`
 	Tools  []Tool `yaml:"tools,omitempty"`
 }
 
