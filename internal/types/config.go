@@ -11,11 +11,12 @@ type Config struct {
 }
 
 type Tool struct {
-	Name        string  `yaml:"name,omitempty"`
-	Description string  `yaml:"description,omitempty"`
-	Conflict    string  `yaml:"conflict,omitempty"`
-	OS          OSList  `yaml:"os,omitempty"`
-	LinkMap     LinkMap `yaml:"linkmap,omitempty"`
+	Name        	string  		`yaml:"name,omitempty"`
+	Description 	string  		`yaml:"description,omitempty"`
+	Conflict    	string  		`yaml:"conflict,omitempty"`
+	OS          	OSList  		`yaml:"os,omitempty"`
+	LinkMap     	LinkMap 		`yaml:"linkmap,omitempty"`
+	PostLinkList 	[]PostLink 	`yaml:"post-link,omitempty"`
 }
 
 type LinkMap struct {
@@ -26,6 +27,12 @@ type LinkMap struct {
 }
 
 type OSList []string
+
+type PostLink struct {
+	Name  	string 		`yaml:"name"`
+	IsPath 	bool			`yaml:"is-path"`
+	Cmd 		[]string 	`yaml:"cmd"`
+}
 
 func (l *LinkMap) UnmarshalYAML(value *yaml.Node) error {
 	switch value.Kind {

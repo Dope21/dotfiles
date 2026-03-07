@@ -4,7 +4,10 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"os/exec"
+	"path/filepath"
 	"slices"
+	"strings"
 
 	"gopkg.in/yaml.v3"
 
@@ -76,6 +79,28 @@ func run(configPath string) error {
 					}
 				} 
 			}
+		}
+
+		utils.LogInfo("Start postlink script", true)
+		for _, script := range tool.PostLinkList {
+			utils.LogInfo(script.Name, false)
+
+			if script.IsPath {
+				path, err := filepath.Abs(script.Cmd[0])
+				if err != nil {
+					return err
+				}
+				script.Cmd[0] = path
+			}
+
+			cmd := exec.Command(script.Cmd[0], script.Cmd[1:]...)
+			cmd.Stdout = os.Stdout
+			cmd.Stderr = os.Stderr
+
+			if err := cmd.Run(); err != nil {
+				return fmt.Errorf("failed to run %s: %w", strings.Join(script.Cmd, " "), err)
+			}
+
 		}
 
 		utils.LogInfo("--------------------", true)

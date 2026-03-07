@@ -23,7 +23,9 @@ tools:
         - "vscode/settings.json": "$USERPROFILE/AppData/Roaming/Code/User/settings.json"
     post-link:
       - name: "Install vscode extensions"
-        cmd: ["vscode/install-extensions.bat"]
+        is-path: true
+        cmd: ["./vscode/install-extensions.bat"]
     maintenace:
       - name: "Collect Vscode Extensions"
-        cmd: ["vscode/get-extensions.bat"]
+        is-path: true
+        cmd: ["./vscode/get-extensions.bat"]
