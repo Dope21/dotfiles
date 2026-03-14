@@ -2,9 +2,6 @@ package dotfiles
 
 import (
 	"fmt"
-	"os"
-	"os/exec"
-	"path/filepath"
 	"slices"
 	"strings"
 
@@ -67,19 +64,7 @@ func Setup(configPath string) error {
 		for _, script := range tool.PostLinkList {
 			utils.LogInfo(script.Name, false)
 
-			if script.IsPath {
-				path, err := filepath.Abs(script.Cmd[0])
-				if err != nil {
-					return err
-				}
-				script.Cmd[0] = path
-			}
-
-			cmd := exec.Command(script.Cmd[0], script.Cmd[1:]...)
-			cmd.Stdout = os.Stdout
-			cmd.Stderr = os.Stderr
-
-			if err := cmd.Run(); err != nil {
+			if err := utils.RunCustomScript(script.Cmd, script.IsPath); err != nil {
 				return fmt.Errorf("failed to run %s: %w", strings.Join(script.Cmd, " "), err)
 			}
 

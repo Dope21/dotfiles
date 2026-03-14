@@ -7,6 +7,9 @@ import (
 	"github.com/spf13/cobra"
 )
 
+var toolName string
+var scriptName string
+
 var rootCmd = &cobra.Command{
 	Use: "root",
 	Short: "Short description",
@@ -18,6 +21,11 @@ var rootCmd = &cobra.Command{
 
 func init() {
 	rootCmd.AddCommand(setupCmd)
+
+	maintainCmd.Flags().StringVarP(&toolName, "tool", "t", "", "tool name")
+	maintainCmd.Flags().StringVarP(&scriptName, "script", "s", "", "script name")
+	maintainCmd.MarkFlagRequired("tool")
+	maintainCmd.MarkFlagRequired("script")
 	rootCmd.AddCommand(maintainCmd)
 }
 

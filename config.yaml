@@ -22,10 +22,10 @@ tools:
         - "vscode/keybindings.json": "$USERPROFILE/AppData/Roaming/Code/User/keybindings.json"
         - "vscode/settings.json": "$USERPROFILE/AppData/Roaming/Code/User/settings.json"
     post-link:
-      - name: "Install vscode extensions"
+      - name: "install-extensions"
         is-path: true
         cmd: ["./vscode/install-extensions.bat"]
     maintenace:
-      - name: "Collect Vscode Extensions"
+      - name: "collect-extensions"
         is-path: true
         cmd: ["./vscode/get-extensions.bat"]

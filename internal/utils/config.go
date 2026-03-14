@@ -1,7 +1,6 @@
 package utils
 
 import (
-	"fmt"
 	"io"
 	"os"
 	"path/filepath"
@@ -31,6 +30,28 @@ func InitialConfig(configPath string) (types.Config, error) {
 	return config, nil
 }
 
+func GetConfig() (types.Config, error) {
+	configDir, err := os.UserConfigDir()
+	if err != nil {
+		return types.Config{}, err
+	}
+
+	configPath := filepath.Join(configDir, "dotfiles", "config.yaml")
+
+	data, err := os.ReadFile(configPath)
+	if err != nil {
+		return types.Config{}, err
+	}
+
+	var config types.Config
+	err = yaml.Unmarshal(data, &config)
+	if err != nil {
+		return config, err
+	}
+
+	return config, nil
+}
+
 func copyConfig(path string) error {
 
 	sourceFile, err := os.Open(path)
@@ -45,7 +66,6 @@ func copyConfig(path string) error {
 	}
 
 	destPath := filepath.Join(configDir, "dotfiles", "config.yaml")
-	fmt.Println(destPath)
 
 	if err := CreatePath(destPath); err != nil {
 		return err
