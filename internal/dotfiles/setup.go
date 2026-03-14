@@ -8,9 +8,7 @@ import (
 	"slices"
 	"strings"
 
-	"github.com/Dope21/dotfiles.git/internal/types"
 	"github.com/Dope21/dotfiles.git/internal/utils"
-	"gopkg.in/yaml.v3"
 )
 
 const BACKUP_PATH = "./backup"
@@ -18,14 +16,7 @@ const BACKUP_PATH = "./backup"
 func Setup(configPath string) error {
 	utils.LogInfo(fmt.Sprintf("Loading Config from %s", configPath), true)
 
-	data, err := os.ReadFile(configPath)
-	if err != nil {
-		return err
-	}
-
-	// TODO: encforce validation
-	var config types.Config
-	err = yaml.Unmarshal(data, &config)
+	config, err := utils.InitialConfig(configPath)
 	if err != nil {
 		return err
 	}
