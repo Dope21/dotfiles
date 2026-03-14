@@ -1,4 +1,4 @@
-package main
+package dotfiles
 
 import (
 	"fmt"
@@ -10,42 +10,12 @@ import (
 
 	"github.com/Dope21/dotfiles.git/internal/types"
 	"github.com/Dope21/dotfiles.git/internal/utils"
-	"github.com/spf13/cobra"
 	"gopkg.in/yaml.v3"
 )
 
 const BACKUP_PATH = "./backup"
 
-var rootCmd = &cobra.Command{
-	Use: "root",
-	Short: "Short description",
-	Long: "Long description",
-	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("Hello from cobra CLI")
-	},
-}
-
-var dotfilesCmd = &cobra.Command{
-	Use: "dotfiles",
-	Short: "setup dotfiles from config",
-	Long: "symlink and running script to setup dotfiles as define in config",
-	Run: func(cmd *cobra.Command, args []string) {
-		setup("./template.yaml")
-	},
-}
-
-func init() {
-	rootCmd.AddCommand(dotfilesCmd)
-}
-
-func main() {
-	if err := rootCmd.Execute(); err != nil {
-		fmt.Println(err)
-		os.Exit(1)
-	}
-}
-
-func setup(configPath string) error {
+func Setup(configPath string) error {
 	utils.LogInfo(fmt.Sprintf("Loading Config from %s", configPath), true)
 
 	data, err := os.ReadFile(configPath)
