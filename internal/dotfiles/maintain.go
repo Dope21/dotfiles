@@ -13,22 +13,18 @@ func Maintain(toolName, scriptName string) error {
 		return err
 	}
 
-	for _, tool := range config.Tools {
+	tool, err := config.GetToolByName(toolName)
+	if err != nil {
+		return err
+	}
 
-		if tool.Name != toolName {
-			continue
-		}
+	script, err := tool.GetMaintainScriptByName(scriptName) 
+	if err != nil {
+		return err
+	}
 
-		for _, script := range tool.MaintenaceList {
-
-			if script.Name != scriptName {
-				continue
-			}
-
-			if err := utils.RunCustomScript(script.Cmd, script.IsPath); err != nil {
-				return fmt.Errorf("failed to run %s: %w", strings.Join(script.Cmd, " "), err)
-			}
-		}
+	if err := utils.RunCustomScript(script.Cmd, script.IsPath); err != nil {
+		return fmt.Errorf("failed to run %s: %w", strings.Join(script.Cmd, " "), err)
 	}
 
 	return nil
