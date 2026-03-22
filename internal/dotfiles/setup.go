@@ -2,10 +2,13 @@ package dotfiles
 
 import (
 	"fmt"
+	"path/filepath"
 	"slices"
 
 	"github.com/Dope21/dotfiles.git/internal/utils"
 )
+
+const BACKUP_PATH = "./backup"
 
 func Setup(configPath string) error {
 
@@ -54,7 +57,7 @@ func Setup(configPath string) error {
 				fmt.Printf("Source: %s\n", source)
 				fmt.Printf("Link: %s\n", link)
 
-				err := utils.CreateSymlink(source, link)
+				err := utils.CreateSymlink(source, link, filepath.Join(BACKUP_PATH, tool.Name))
 				if err != nil {
 
 					fmt.Printf("Error: %s\n", err.Error())
