@@ -1,2 +1,6 @@
 **/.DS_Store
 **/*.todo
+
+/dotfiles
+/logs
+/backup

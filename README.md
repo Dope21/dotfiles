@@ -1,17 +1,13 @@
-## Symlink
+# My Dotfiles (Public)
 
-### Commands
+My dotfiles and CLI tool created by [Cobra](https://pkg.go.dev/github.com/spf13/cobra) to help manage my environment.
 
-linux/macos
+## Run Setup
 ```
-ln -s <original-file> <path-to-link>
-```
-
-windows (cmd with administrator)
-```
-mklink <path-to-link> <original-file>
+dotfiles setup <path-to-config.yaml>
 ```
 
-### Noted Paths
-
-vscode: ` C:\Users\<user-name>\AppData\Roaming\Code\User`
+## Run Maintainace Script
+```
+dotfiles maintain --tool <tool-name> --script <script-name>
+```
