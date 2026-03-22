@@ -31,7 +31,11 @@ func init() {
 
 func Execute() {
 	if err := rootCmd.Execute(); err != nil {
+		fmt.Println()
+		fmt.Println("==================================")
+		fmt.Println("️❌ The task got terminate.")
 		fmt.Println(err)
+		fmt.Println("==================================")
 		os.Exit(1)
 	}
 }
