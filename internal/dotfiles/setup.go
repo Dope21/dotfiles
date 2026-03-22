@@ -7,8 +7,6 @@ import (
 	"github.com/Dope21/dotfiles.git/internal/utils"
 )
 
-const BACKUP_PATH = "./backup"
-
 func Setup(configPath string) error {
 
 	config, err := utils.InitialConfig(configPath)
@@ -40,13 +38,15 @@ func Setup(configPath string) error {
 		fmt.Printf("Tool: %s\n", tool.Name)
 		fmt.Printf("Description: %s\n", tool.Description)
 		fmt.Println()
-		fmt.Println("----------------------------------")
-		fmt.Println()
 
 		linkMap := tool.LinkMap.GetOS(runningOS)
 
-		fmt.Println("Create Symbolic Link")
-		fmt.Println()
+		if len(linkMap) > 0 {
+			fmt.Println("----------------------------------")
+			fmt.Println()
+			fmt.Println("Create Symbolic Link")
+			fmt.Println()
+		}
 
 		for _, link := range linkMap {
 			for source, link := range link {
@@ -70,11 +70,12 @@ func Setup(configPath string) error {
 			fmt.Println()
 		}
 
-		fmt.Println("----------------------------------")
-		fmt.Println()
-
-		fmt.Println("Running Post Symbolic Link Script")
-		fmt.Println()
+		if len(tool.PostLinkList) > 0 {
+			fmt.Println("----------------------------------")
+			fmt.Println()
+			fmt.Println("Running Post Symbolic Link Script")
+			fmt.Println()
+		}
 
 		for _, script := range tool.PostLinkList {
 
