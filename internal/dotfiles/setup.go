@@ -3,7 +3,6 @@ package dotfiles
 import (
 	"fmt"
 	"slices"
-	"strings"
 
 	"github.com/Dope21/dotfiles.git/internal/utils"
 )
@@ -11,7 +10,6 @@ import (
 const BACKUP_PATH = "./backup"
 
 func Setup(configPath string) error {
-	utils.LogInfo(fmt.Sprintf("Loading Config from %s", configPath), true)
 
 	config, err := utils.InitialConfig(configPath)
 	if err != nil {
@@ -23,56 +21,79 @@ func Setup(configPath string) error {
 		return err
 	}
 
-	utils.LogInfo(fmt.Sprintf("Running on: %s", runningOS), true)
+	fmt.Println("==================================")
+	fmt.Println("Initial Dotfiles Setup")
+	fmt.Printf("Config file: %s\n", configPath)
+	fmt.Printf("OS: %s\n", runningOS)
+	fmt.Println("==================================")
 
-	utils.LogInfo("--------------------", false)
 	for _, tool := range config.Tools {
+
+		fmt.Println()
+		fmt.Println("==================================")
 
 		if tool.OS != nil && !slices.Contains(tool.OS, runningOS) {
 			continue
 		}
 
-		utils.LogInfo(tool.Description, true)
+		fmt.Println()
+		fmt.Printf("Tool: %s\n", tool.Name)
+		fmt.Printf("Description: %s\n", tool.Description)
+		fmt.Println()
+		fmt.Println("----------------------------------")
+		fmt.Println()
 
 		linkMap := tool.LinkMap.GetOS(runningOS)
 
-		utils.LogInfo("Start mapping symlink", true)
+		fmt.Println("Create Symbolic Link")
+		fmt.Println()
 
 		for _, link := range linkMap {
 			for source, link := range link {
 
-				utils.LogInfo(fmt.Sprintf("Source: %s", source), false)
-				utils.LogInfo(fmt.Sprintf("Link: %s", link), false)
+				fmt.Printf("Source: %s\n", source)
+				fmt.Printf("Link: %s\n", link)
 
 				err := utils.CreateSymlink(source, link)
 				if err != nil {
 
-					utils.LogInfo(fmt.Sprintf("Symlink error for %s", tool.Name), false)
-					utils.LogInfo(err.Error(), false)
+					fmt.Printf("Error: %s\n", err.Error())
 
 					if tool.Conflict == "skip" {
-						utils.LogInfo("Skip mapping", true)
+						fmt.Printf("Skip mapping")
 						continue
 					} else {
 						return err
 					}
 				} 
 			}
+			fmt.Println()
 		}
 
-		utils.LogInfo("Start postlink script", true)
+		fmt.Println("----------------------------------")
+		fmt.Println()
+
+		fmt.Println("Running Post Symbolic Link Script")
+		fmt.Println()
+
 		for _, script := range tool.PostLinkList {
-			utils.LogInfo(script.Name, false)
+
+			fmt.Printf("Script name: %s\n", script.Name)
+			fmt.Printf("CMD: %s\n", script.Cmd)
 
 			if err := utils.RunCustomScript(script.Cmd, script.IsPath); err != nil {
-				return fmt.Errorf("failed to run %s: %w", strings.Join(script.Cmd, " "), err)
+				fmt.Printf("Error: %s\n", err.Error())
+				fmt.Printf("Skip running this script")
 			}
-
+			fmt.Println()
 		}
 
-		utils.LogInfo("--------------------", true)
+		fmt.Println("==================================")
 	}
 
+	fmt.Println()
+	fmt.Println("==================================")
 	fmt.Println("✅ Setup completed.")
+	fmt.Println("==================================")
 	return nil
 }
