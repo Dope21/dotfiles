@@ -12,6 +12,13 @@ const BACKUP_PATH = "./backup"
 
 func Setup(configPath string) error {
 
+	logFile, err := utils.CreateLogFile()
+	if err != nil {
+		fmt.Printf("Warning: Can't create a log file: %v\n", err)
+	}
+
+	defer logFile.Close()
+
 	config, err := utils.InitialConfig(configPath)
 	if err != nil {
 		return err
@@ -22,82 +29,82 @@ func Setup(configPath string) error {
 		return err
 	}
 
-	fmt.Println("==================================")
-	fmt.Println("Initial Dotfiles Setup")
-	fmt.Printf("Config file: %s\n", configPath)
-	fmt.Printf("OS: %s\n", runningOS)
-	fmt.Println("==================================")
+	utils.LogAndDisplay("==================================")
+	utils.LogAndDisplay("Initial Dotfiles Setup")
+	utils.LogAndDisplay("Config file: %s", configPath)
+	utils.LogAndDisplay("OS: %s", runningOS)
+	utils.LogAndDisplay("==================================")
 
 	for _, tool := range config.Tools {
 
-		fmt.Println()
-		fmt.Println("==================================")
+		utils.LogAndDisplay("")
+		utils.LogAndDisplay("==================================")
 
 		if tool.OS != nil && !slices.Contains(tool.OS, runningOS) {
 			continue
 		}
 
-		fmt.Println()
-		fmt.Printf("Tool: %s\n", tool.Name)
-		fmt.Printf("Description: %s\n", tool.Description)
-		fmt.Println()
+		utils.LogAndDisplay("")
+		utils.LogAndDisplay("Tool: %s", tool.Name)
+		utils.LogAndDisplay("Description: %s", tool.Description)
+		utils.LogAndDisplay("")
 
 		linkMap := tool.LinkMap.GetOS(runningOS)
 
 		if len(linkMap) > 0 {
-			fmt.Println("----------------------------------")
-			fmt.Println()
-			fmt.Println("Create Symbolic Link")
-			fmt.Println()
+			utils.LogAndDisplay("----------------------------------")
+			utils.LogAndDisplay("")
+			utils.LogAndDisplay("Create Symbolic Link")
+			utils.LogAndDisplay("")
 		}
 
 		for _, link := range linkMap {
 			for source, link := range link {
 
-				fmt.Printf("Source: %s\n", source)
-				fmt.Printf("Link: %s\n", link)
+				utils.LogAndDisplay("Source: %s", source)
+				utils.LogAndDisplay("Link: %s", link)
 
 				err := utils.CreateSymlink(source, link, filepath.Join(BACKUP_PATH, tool.Name))
 				if err != nil {
 
-					fmt.Printf("Error: %s\n", err.Error())
+					utils.LogAndDisplay("Error: %v", err)
 
 					if tool.Conflict == "skip" {
-						fmt.Printf("Skip mapping")
+						utils.LogAndDisplay("Skip mapping")
 						continue
 					} else {
 						return err
 					}
 				} 
 			}
-			fmt.Println()
+			utils.LogAndDisplay("")
 		}
 
 		if len(tool.PostLinkList) > 0 {
-			fmt.Println("----------------------------------")
-			fmt.Println()
-			fmt.Println("Running Post Symbolic Link Script")
-			fmt.Println()
+			utils.LogAndDisplay("----------------------------------")
+			utils.LogAndDisplay("")
+			utils.LogAndDisplay("Running Post Symbolic Link Script")
+			utils.LogAndDisplay("")
 		}
 
 		for _, script := range tool.PostLinkList {
-
-			fmt.Printf("Script name: %s\n", script.Name)
-			fmt.Printf("CMD: %s\n", script.Cmd)
+			utils.LogAndDisplay("Script name: %s", script.Name)
+			utils.LogAndDisplay("CMD: %s", script.Cmd)
 
 			if err := utils.RunCustomScript(script.Cmd, script.IsPath); err != nil {
-				fmt.Printf("Error: %s\n", err.Error())
-				fmt.Printf("Skip running this script")
+				utils.LogAndDisplay("Error: %v", err)
+				utils.LogAndDisplay("Skip running this script")
 			}
-			fmt.Println()
+			utils.LogAndDisplay("")
 		}
 
-		fmt.Println("==================================")
+		utils.LogAndDisplay("==================================")
 	}
 
-	fmt.Println()
-	fmt.Println("==================================")
-	fmt.Println("✅ Setup completed.")
-	fmt.Println("==================================")
+	utils.LogAndDisplay("")
+	utils.LogAndDisplay("==================================")
+	utils.LogAndDisplay("✅ Setup completed.")
+	utils.LogAndDisplay("==================================")
+
 	return nil
 }
